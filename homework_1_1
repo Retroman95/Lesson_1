@@ -1,0 +1,13 @@
+#Задача №1. Секция статьи "Задача №1."
+#Написать метод domain_name, который вернет домен из url адреса:
+#
+#url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+#url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
+#url = "https://www.cnet.com"                -> domain name = "cnet"
+
+import re
+
+def domain_name(url):
+    return url.split("www.")[-1].split("//")[-1].split(".")[0]
+
+print(domain_name("http://google.com"))
