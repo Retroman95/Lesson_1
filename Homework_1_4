@@ -21,15 +21,19 @@
 #-b--anana
 
 
-from itertools import combinations
+import itertools
 
 
 def bananas(s) -> set:
     result = set()
-    for i in combinations(range(1, len(s) - 1), 3):
-        m = list(s)
-        for j in i: m[j] = '-'
-        if [k for k in m if k != '-'] == list('banana'): result.add(''.join(m))
+    for mixture in itertools.combinations(range(len(s)), len(s) - len('banana')):
+        arr = list(s)
+        for i in mixture:
+            arr[i] = '-'
+        intermediate_result = ''.join(arr)
+        if intermediate_result.replace('-', '') == 'banana':
+            result.add(intermediate_result)
     return result
 
-print(bananas('bbananana'))
+if __name__ == "__main__":
+    print(bananas("bbananana"))
